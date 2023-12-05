@@ -1,10 +1,17 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace coffee_shop.Models;
 
 public class Coffee {
+    public int CoffeeId { get; set; }
 
-
+    [Required]
     public string Name { get; set; }
+
+    [Required]
     public string Description { get; set; }
+
+    [Required, Range(0, 20, ErrorMessage = "You must enter a price between 0 and 20.")]
     public double Price { get; set; }
 
 
@@ -16,20 +23,24 @@ public class Coffee {
     {
         this.Name = name;
     }
-    public string getName()
+
+
+    public string getDescription()
     {
-        return Name;
+        return Description;
     }
-    public void setName(string name) 
+    public void setDescription(string description) 
     {
-        this.Name = name;
+        this.Description = description;
     }
-    public string getName()
+
+
+    public double getPrice()
     {
-        return Name;
+        return Price;
     }
-    public void setName(string name) 
+    public void setPrice(double price) 
     {
-        this.Name = name;
+        this.Price = price;
     }
 }
