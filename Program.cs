@@ -1,10 +1,12 @@
 using coffee_shop.Repositories;
+using coffee_shop.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddSingleton<ICoffeeRepository, MockCoffeeRepository>();
+builder.Services.AddSqlite<CoffeeDbContext>("Data Source=SqlDatabase.db");
+builder.Services.AddScoped<ICoffeeRepository, EFCoffeeRepository>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
